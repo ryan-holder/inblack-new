@@ -1,32 +1,21 @@
-// import { Entry } from "contentful";
-// import { useEffect } from "react";
+import { ProductEntrySkeleton } from "@/core/types/types";
+import { Entry } from "contentful";
+import LazyImage from "../images/lazy-loaded-image";
 
-// const Products: React.FC<IProducts> = ({ isLoading, getDataError, products, displayProducts }) => {
-//   useEffect(() => window.scrollTo(0, 0));
+interface ProductsProps {
+  products: Entry<ProductEntrySkeleton>[];
+}
 
-//   return (
-//     <div className="w-full h-full flex flex-col items-center pb-20 xl:pb-0">
-//       {isLoading || (products === null && getDataError === false) ? (
-//         <div className="w-full xl:w-11/12 3xl:w-10/12 h-full">
-//           <DummyList />
-//         </div>
-//       ) : (
-//         <div className="w-full xl:w-11/12 3xl:w-10/12 grid grid-cols-2 gap-2 sm:gap-3">
-//           {displayProducts &&
-//             Array.from(displayProducts)
-//               .reverse()
-//               .sort((x) => (x.fields?.showPrice ? -1 : 1))
-//               .map((item: Entry<IProduct>, index: number) => (
-//                 <LazyImage
-//                   key={item.fields?.title + index + displayProducts.length}
-//                   item={item}
-//                   onClick={() => {}}
-//                 />
-//               ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Products;
+export default function Products({ products }: ProductsProps) {
+  return (
+    <div className="w-full h-full flex flex-col items-center pb-20 xl:pb-0">
+      <div className="w-full h-full xl:w-11/12 3xl:w-10/12 grid grid-cols-2 gap-2 sm:gap-3">
+        {products &&
+          Array.from(products)
+            .reverse()
+            .sort((x) => (x.fields?.showPrice ? -1 : 1))
+            .map((x) => <LazyImage key={x.sys.id} product={x} />)}
+      </div>
+    </div>
+  );
+}

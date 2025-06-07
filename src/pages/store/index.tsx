@@ -1,3 +1,4 @@
+import Products from "@/components/products/products-list";
 import { apiService } from "@/core/services/api-service";
 import { typeGuards } from "@/core/types/type-guards";
 import { ProductEntrySkeleton } from "@/core/types/types";
@@ -28,7 +29,7 @@ export async function getStaticProps(): Promise<GetStaticPropsResult<StoreProps>
   // Return the page and data for layout
   return {
     props: {
-      productsList: productList,
+      productsList: productList.slice(0, 20),
     },
     revalidate: process.env.NEXT_PUBLIC_ENV === "prod" ? 900 : 1,
   };
@@ -38,7 +39,7 @@ export default function Store({ productsList }: StoreProps) {
   return (
     <MainLayout
       left={<div className="flex flex-col items-center w-full justify-center bg-red-200">1123</div>}
-      centre={<div className="flex flex-col items-center w-full justify-center bg-red-200">2</div>}
+      centre={<Products products={productsList} />}
       right={<div className="flex flex-col items-center w-full justify-center bg-red-200">3</div>}
     />
   );

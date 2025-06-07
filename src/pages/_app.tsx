@@ -33,7 +33,7 @@ const suisse = localFont({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={suisse.variable}>
+    <main className={`${suisse.variable} h-full w-full`}>
       <Component {...pageProps} />;
     </main>
   );

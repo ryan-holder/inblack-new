@@ -21,7 +21,7 @@ export default function MainLayout({ left, centre, right }: MainLayoutProps) {
   return (
     <div
       className={`pb-0 ${
-        showMobileSubCategories || expandCart ? "max-h-screen w-full fixed" : ""
+        showMobileSubCategories || expandCart ? "max-h-screen w-full fixed" : "h-full"
       }`}>
       <Title
         showCart={false} //checkout && checkout.lineItems?.length > 0 ? true : false
@@ -29,7 +29,7 @@ export default function MainLayout({ left, centre, right }: MainLayoutProps) {
         selectedSubCategory={selectedSubCategory}
         updateShowMobileSubCategories={updateShowMobileSubCategories}
       />
-      <div className="h-full min-h-screen w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-full mx-auto xl:mx-0 grid xl:grid-cols-10">
+      <div className="min-h-screen h-full w-11/12 sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-full mx-auto xl:mx-0 grid xl:grid-cols-10">
         <PanelLayout>{left}</PanelLayout>
         <CentreLayout>{centre}</CentreLayout>
         <PanelLayout>{right}</PanelLayout>

@@ -37,7 +37,7 @@ export default function Title({
         </h1>
         <div className="xl:hidden pb-3 flex flex-row justify-between">
           <p
-            className="sm:pl-10 inline-block suisse-light underline cursor-pointer hover:text-black"
+            className="sm:pl-10 inline-block font-suisse font-extralight underline cursor-pointer hover:text-black"
             onClick={() => updateShowMobileSubCategories(true)}>
             BROWSE {`– ${selectedSubCategory.toUpperCase()}`}
           </p>

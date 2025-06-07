@@ -3,3 +3,13 @@
 @theme {
   --font-suisse: "suisse", "sans-serif";
 }
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}

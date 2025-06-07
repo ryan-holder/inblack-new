@@ -1,3 +1,4 @@
+import ProductInformation from "@/components/products/product-description";
 import Products from "@/components/products/products-list";
 import { apiService } from "@/core/services/api-service";
 import { typeGuards } from "@/core/types/type-guards";
@@ -40,7 +41,12 @@ export default function Store({ productsList }: StoreProps) {
     <MainLayout
       left={<div className="flex flex-col items-center w-full justify-center bg-red-200">1123</div>}
       centre={<Products products={productsList} />}
-      right={<div className="flex flex-col items-center w-full justify-center bg-red-200">3</div>}
+      right={
+        <ProductInformation
+          product={productsList[0]}
+          // addItemToCart={}
+        />
+      }
     />
   );
 }

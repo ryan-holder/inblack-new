@@ -1,11 +1,27 @@
 import { createClient, EntryCollection } from "contentful";
-import { ProductCategoryEntrySkeleton, ProductsListEntrySkeleton } from "@/core/types/types";
+import {
+  ProductCategoryEntrySkeleton,
+  ProductEntrySkeleton,
+  ProductsListEntrySkeleton,
+} from "@/core/types/types";
 
 const contentfulClient = createClient({
   environment: "master",
   space: "ghjcm95y2t8m",
   accessToken: process.env.NEXT_PUBLIC_CONTENTFUL ?? "",
 });
+
+async function getProduct(): Promise<EntryCollection<ProductEntrySkeleton, undefined, string>> {
+  try {
+    const response = await contentfulClient.getEntries<ProductEntrySkeleton>({
+      content_type: "product",
+    });
+    return response;
+  } catch (error) {
+    console.error("Unable to fetch productsList", error);
+    throw error;
+  }
+}
 
 async function getProducts(): Promise<
   EntryCollection<ProductsListEntrySkeleton, undefined, string>
@@ -36,6 +52,7 @@ async function getProductCategories(): Promise<
 }
 
 export const apiService = {
+  getProduct,
   getProducts,
   getProductCategories,
 };

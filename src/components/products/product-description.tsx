@@ -4,12 +4,12 @@ import { Entry } from "contentful";
 import { DesignerEntrySkeleton, ProductEntrySkeleton } from "@/core/types/types";
 import Accordion from "@/components/accordion/accordion";
 
-interface ProductInformationProps {
+interface ProductDescriptionProps {
   product: Entry<ProductEntrySkeleton>;
   // addItemToCart: (item: Entry<ProductEntrySkeleton>, quantity: number) => Promise<boolean>;
 }
 
-export default function ProductInformation({ product }: ProductInformationProps) {
+export default function ProductDescription({ product }: ProductDescriptionProps) {
   const title = product.fields?.title as string;
   const description = product.fields?.description as string;
   const price = product.fields?.price as string;
